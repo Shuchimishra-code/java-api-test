@@ -16,8 +16,8 @@ Body:
 ```json
 {
   "name": "Shuchi Mishra",
-  "regNo": "YOUR_REG_NO",
-  "email": "YOUR_EMAIL"
+  "regNo": "REG12347", 
+  "email": "shuchi@gmail.com"
 }
 ```
 
@@ -48,17 +48,22 @@ Authorization: Bearer <accessToken>
 Body:
 ```json
 {
-  "finalQuery": "SQL QUERY"
+
+  "finalQuery": "SELECT p.AMOUNT AS SALARY, CONCAT(e.FIRST_NAME, ' ', e.LAST_NAME) AS NAME, TIMESTAMPDIFF(YEAR, e.DOB, CURDATE()) AS AGE, d.DEPARTMENT_NAME FROM PAYMENTS p JOIN EMPLOYEE e ON p.EMP_ID = e.EMP_ID JOIN DEPARTMENT d ON e.DEPARTMENT = d.DEPARTMENT_ID WHERE DAY(p.PAYMENT_TIME) != 1 ORDER BY p.AMOUNT DESC LIMIT 1;"
+
 }
 ```
 
+```markdown
+Note: This endpoint is a POST API and cannot be accessed directly via browser.
 
 ## Result
 
-Successfully received:
-Webhook processed successfully
-
-
+```json
+{
+  "success": true,
+  "message": "Webhook processed successfully"
+}
 ## Note
 
 The API workflow was successfully tested using Postman.
